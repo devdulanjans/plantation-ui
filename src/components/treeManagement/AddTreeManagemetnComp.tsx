@@ -215,6 +215,7 @@ export default function TreeManagement() {
       const uniqueCode = `${treeForm.treeCode}`;
       const url = await QRCode.toDataURL(uniqueCode);
       setQrCodeUrl(url);
+      console.log(qrCodeUrl);
       Swal.fire({
         icon: "success",
         title: "QR Generated",

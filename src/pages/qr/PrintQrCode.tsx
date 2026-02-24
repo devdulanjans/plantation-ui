@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import ComponentCard from "../../components/common/ComponentCard";
-import Input from "../../components/form/input/InputField";
-import Label from "../../components/form/Label";
 import Swal from "sweetalert2";
 import QRCode from "qrcode";
 import { callApi } from "../../utils/api";
@@ -53,6 +51,7 @@ const fetchStatusRecords = async (status: string) => {
       images.push({ code: record.qrCode, url });
     }
     setQrImages(images);
+    console.log(qrImages);
     return images;
   };
 

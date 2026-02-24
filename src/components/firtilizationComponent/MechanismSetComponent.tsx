@@ -4,7 +4,6 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Select from "../form/Select";
 import Textarea from "../form/input/TextArea";
-import DatePicker from "../form/date-picker";
 import { callApi } from "../../utils/api";
 import Swal from "sweetalert2";
 

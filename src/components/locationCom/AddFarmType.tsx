@@ -4,12 +4,18 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Select from "../form/Select";
 
+type FarmType = {
+  typeName: string;
+  description: string;
+  status: string;
+};
+
 export default function FarmTypeRegistration() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
-  const [farmTypes, setFarmTypes] = useState([]);
+  const [farmTypes, setFarmTypes] = useState<FarmType[]>([]);
 
-  const [farmForm, setFarmForm] = useState({
+  const [farmForm, setFarmForm] = useState<FarmType>({
     typeName: "",
     description: "",
     status: "",

@@ -4,7 +4,7 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Select from "../form/Select";
 import DatePicker from "../form/date-picker";
-import Textarea from "../../components/form/form-elements/SelectInputs";
+import Textarea from "../form/input/TextArea";
 import { EyeIcon, EyeCloseIcon } from "../../icons";
 
 export default function AddNewMailForm() {
@@ -62,7 +62,11 @@ export default function AddNewMailForm() {
         {/* Mail Type */}
         <div>
           <Label>Mail Type</Label>
-          <Select options={mailTypes} placeholder="Select mail type" />
+          <Select
+            options={mailTypes}
+            placeholder="Select mail type"
+            onChange={(value) => console.log("Mail Type selected:", value)}
+          />
         </div>
 
         {/* Subject */}
@@ -74,7 +78,7 @@ export default function AddNewMailForm() {
         {/* Description */}
         <div>
           <Label htmlFor="description">Description</Label>
-          <Textarea id="description" rows={3} placeholder="Description or note..." />
+          <Textarea rows={3} placeholder="Description or note..." />
         </div>
 
         {/* Mail Date */}
@@ -83,14 +87,18 @@ export default function AddNewMailForm() {
             id="mailDate"
             label="Mail Date"
             placeholder="Select date"
-            onChange={(dates, dateStr) => console.log(dateStr)}
+            onChange={(dateStr) => console.log(dateStr)}
           />
         </div>
 
         {/* Department */}
         <div>
           <Label>Department</Label>
-          <Select options={departments} placeholder="Select department" />
+          <Select
+            options={departments}
+            placeholder="Select department"
+            onChange={(value) => console.log("Department selected:", value)}
+          />
         </div>
 
         {/* Assigned To */}
@@ -102,7 +110,11 @@ export default function AddNewMailForm() {
         {/* Priority */}
         <div>
           <Label>Priority</Label>
-          <Select options={priorities} placeholder="Select priority" />
+          <Select
+            options={priorities}
+            placeholder="Select priority"
+            onChange={(value) => console.log("Priority selected:", value)}
+          />
         </div>
 
         {/* Tracking Number (Optional - toggled) */}
@@ -111,7 +123,7 @@ export default function AddNewMailForm() {
         {/* Remarks */}
         <div>
           <Label htmlFor="remarks">Remarks</Label>
-          <Textarea id="remarks" rows={2} placeholder="Optional internal remarks" />
+          <Textarea rows={2} placeholder="Optional internal remarks" />
         </div>
 
         {/* File Upload (You can integrate this later with a file input or drag-drop) */}

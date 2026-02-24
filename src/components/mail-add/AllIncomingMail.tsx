@@ -55,11 +55,19 @@ export default function AllIncomingMail() {
         </div>
         <div>
           <Label>Department</Label>
-          <Select options={departmentOptions} placeholder="Filter by department" />
+          <Select
+            options={departmentOptions}
+            placeholder="Filter by department"
+            onChange={() => {}}
+          />
         </div>
         <div>
           <Label>Priority</Label>
-          <Select options={priorityOptions} placeholder="Filter by priority" />
+          <Select
+            options={priorityOptions}
+            placeholder="Filter by priority"
+            onChange={() => {}}
+          />
         </div>
       </div>
 
