@@ -12,7 +12,7 @@ export async function callApi<T>(
   options: ApiOptions = {}
 ): Promise<T> {
   const { method = "GET", headers = {}, body, credentials } = options;
-  const finalUrl = `http://localhost:3030${url}`;
+  const finalUrl = `http://13.201.122.57:3030${url}`;
 
   const response = await fetch(finalUrl, {
     method,
