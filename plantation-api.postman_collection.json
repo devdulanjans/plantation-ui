@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "plantation-api-collection-001",
+    "name": "Plantation API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "/api/qr-allocations/status/all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/qr-allocations/status/all",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "qr-allocations", "status", "all"]
+        }
+      }
+    },
+    {
+      "name": "/api/qr-allocations",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"allocationPayload\": {}\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/qr-allocations",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "qr-allocations"]
+        }
+      }
+    },
+    {
+      "name": "/api/qr-allocations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/qr-allocations",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "qr-allocations"]
+        }
+      }
+    },
+    {
+      "name": "/api/qr-allocations/status/{status}",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/qr-allocations/status/:status",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "qr-allocations", "status", ":status"]
+        }
+      }
+    },
+    {
+      "name": "/api/qr-allocations/bulk/status",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"qrCodes\": [],\n  \"status\": \"Printed\",\n  \"changedBy\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/qr-allocations/bulk/status",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "qr-allocations", "bulk", "status"]
+        }
+      }
+    },
+    {
+      "name": "/api/rows",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rowName\": \"\",\n  \"farmType\": \"\",\n  \"soilType\": \"\",\n  \"irrigationType\": \"\",\n  \"latitude\": \"\",\n  \"longitude\": \"\",\n  \"status\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/rows",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "rows"]
+        }
+      }
+    },
+    {
+      "name": "/api/rows",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/rows",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "rows"]
+        }
+      }
+    },
+    {
+      "name": "/api/farms",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/farms",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "farms"]
+        }
+      }
+    },
+    {
+      "name": "/api/farms",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"typeName\": \"\",\n  \"description\": \"\",\n  \"status\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/farms",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "farms"]
+        }
+      }
+    },
+    {
+      "name": "/api/locations",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"locationName\": \"\",\n  \"row\": \"\",\n  \"latitude\": \"\",\n  \"longitude\": \"\",\n  \"description\": \"\",\n  \"status\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/locations",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "locations"]
+        }
+      }
+    },
+    {
+      "name": "/api/locations",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/locations",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "locations"]
+        }
+      }
+    },
+    {
+      "name": "/api/users/login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://13.201.122.57:3030/api/users/login",
+          "protocol": "http",
+          "host": ["13.201.122.57"],
+          "port": "3030",
+          "path": ["api", "users", "login"]
+        }
+      }
+    }
+  ]
+}

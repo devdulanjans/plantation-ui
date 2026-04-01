@@ -19,6 +19,25 @@ export default function GenerateQRCodesComponent() {
   const [qrCodes, setQrCodes] = useState<{ code: string; url: string }[]>([]);
   const printRef = useRef<HTMLDivElement>(null);
   const [qrStatusRecords, setQrStatusRecords] = useState<QrStatusRecord[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filterDate, setFilterDate] = useState("");
+  const [filterQrCode, setFilterQrCode] = useState("");
+  const recordsPerPage = 50;
+
+  // Filter records by date and QR code
+  const filteredRecords = qrStatusRecords.filter((record) => {
+    // Normalize to YYYY-MM-DD for comparison
+    const recordDate = record.allocationDate ? record.allocationDate.slice(0, 10) : "";
+    const matchesDate = filterDate ? recordDate === filterDate : true;
+    const matchesQrCode = filterQrCode ? record.qrCode.toLowerCase().includes(filterQrCode.toLowerCase()) : true;
+    return matchesDate && matchesQrCode;
+  });
+
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
+  const paginatedRecords = filteredRecords.slice(
+    (currentPage - 1) * recordsPerPage,
+    currentPage * recordsPerPage
+  );
 
   useEffect(() => {
     const fetchStatusRecords = async () => {
@@ -196,6 +215,30 @@ export default function GenerateQRCodesComponent() {
 
       <div className="mt-12">
         <h3 className="font-semibold mb-2">All QR Status Records</h3>
+        {/* Filter Controls */}
+        <div className="flex flex-col md:flex-row gap-4 mb-4">
+          <div>
+            <Label htmlFor="filterDate">Filter by Date</Label>
+            <input
+              id="filterDate"
+              type="date"
+              className="border rounded px-2 py-1 w-full"
+              value={filterDate}
+              onChange={e => { setFilterDate(e.target.value); setCurrentPage(1); }}
+            />
+          </div>
+          <div>
+            <Label htmlFor="filterQrCode">Filter by QR Code</Label>
+            <input
+              id="filterQrCode"
+              type="text"
+              className="border rounded px-2 py-1 w-full"
+              placeholder="Enter QR Code"
+              value={filterQrCode}
+              onChange={e => { setFilterQrCode(e.target.value); setCurrentPage(1); }}
+            />
+          </div>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm text-left border border-gray-200 dark:border-gray-700">
             <thead className="bg-gray-100 dark:bg-dark-800">
@@ -208,7 +251,7 @@ export default function GenerateQRCodesComponent() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-dark-900">
-              {qrStatusRecords.map((record, idx) => (
+              {paginatedRecords.map((record, idx) => (
                 <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-dark-700">
                   <td className="px-4 py-2 border-r">{record.assetCode}</td>
                   <td className="px-4 py-2 border-r">{record.qrCode}</td>
@@ -219,10 +262,38 @@ export default function GenerateQRCodesComponent() {
               ))}
             </tbody>
           </table>
-          {qrStatusRecords.length === 0 && (
+          {filteredRecords.length === 0 && (
             <div className="p-4 text-sm text-gray-500 dark:text-gray-400">No QR status records found.</div>
           )}
         </div>
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center mt-4 gap-2">
+            <button
+              className="px-3 py-1 rounded border bg-gray-100 dark:bg-dark-700 disabled:opacity-50"
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                className={`px-3 py-1 rounded border ${currentPage === i + 1 ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-dark-700'}`}
+                onClick={() => setCurrentPage(i + 1)}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button
+              className="px-3 py-1 rounded border bg-gray-100 dark:bg-dark-700 disabled:opacity-50"
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </ComponentCard>
     

@@ -10,7 +10,7 @@ export default function GenerateQRCodes() {
         title="Alvis Mail Management System"
         description="Alvis Mail Management System"
       />
-      <PageBreadcrumb pageTitle="User Assign Mail" />
+      <PageBreadcrumb pageTitle="Generate QR Codes" />
       <div className="grid grid-cols-1 gap-12 xl:grid-cols-1">
         <div className="space-y-12">
           <GenerateQRCodesComponent />
